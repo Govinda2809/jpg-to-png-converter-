@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>JPG → PNG Converter — Client-side Image Converter</title>
+  <meta name="description" content="Convert JPG/JPEG images to PNG in your browser. No uploads, privacy-first, client-side only." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="page">
+    <header class="hero" role="banner">
+      <h1 class="title">JPG → PNG Converter</h1>
+      <p class="tagline">Convert JPG images to PNG instantly — fast, private, and 100% in your browser.</p>
+      <p class="privacy-note" aria-hidden="false">All image processing happens locally in your browser.</p>
+    </header>
+
+    <section class="card" aria-labelledby="uploader-label">
+      <div class="uploader">
+        <label id="uploader-label" class="dropzone" for="file-input" tabindex="0" aria-describedby="uploader-desc">
+          <input id="file-input" type="file" accept=".jpg,.jpeg,image/jpeg" />
+          <div class="drop-content">
+            <svg class="icon" width="48" height="48" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M19 9h-4V3H9v6H5l7 7 7-7z"/></svg>
+            <strong>Drag & drop a JPG here</strong>
+            <span id="uploader-desc" class="muted">or click to browse — JPG / JPEG only</span>
+          </div>
+        </label>
+
+        <div class="meta" aria-live="polite">
+          <p id="file-info" class="file-info muted">No file selected</p>
+          <p id="error-msg" class="error" role="alert" aria-atomic="true"></p>
+        </div>
+
+        <div class="preview-wrap" id="preview-wrap" hidden>
+          <div class="preview-inner">
+            <img id="preview-img" alt="Uploaded preview" />
+          </div>
+          <div class="file-details">
+            <div><strong id="detail-name"></strong></div>
+            <div class="muted" id="detail-size"></div>
+          </div>
+        </div>
+
+        <div class="controls">
+          <button id="convert-btn" class="btn primary" disabled>Convert to PNG</button>
+          <button id="reset-btn" class="btn" type="button" aria-disabled="true">Reset</button>
+        </div>
+
+        <div id="loader" class="loader" hidden aria-hidden="true" aria-live="polite">
+          <div class="spinner" aria-hidden="true"></div>
+          <span>Converting…</span>
+        </div>
+
+        <p class="small muted" style="margin-top:12px">Tip: Large images are downscaled automatically to avoid browser memory issues.</p>
+      </div>
+    </section>
+
+    <section class="how-it-works card">
+      <h2>How it works</h2>
+      <ol>
+        <li>Choose or drop a JPG image (keeps it local).</li>
+        <li>We convert it in your browser using the Canvas API.</li>
+        <li>Your PNG is instantly downloaded — no uploads or storage.</li>
+      </ol>
+    </section>
+
+    <section class="faq card">
+      <h2>FAQ</h2>
+      <details>
+        <summary>Is my image uploaded anywhere?</summary>
+        <p>No. All processing happens locally in your browser and nothing is sent to a server.</p>
+      </details>
+      <details>
+        <summary>What file types are supported?</summary>
+        <p>Only JPG / JPEG images are accepted. PNG output is generated from your file client-side.</p>
+      </details>
+      <details>
+        <summary>What about very large images?</summary>
+        <p>Very large images will be downscaled to a safe maximum dimension to prevent browser memory errors. This preserves aspect ratio and aims for a balance between quality and reliability.</p>
+      </details>
+    </section>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div>© 2026 JPG to PNG Converter</div>
+    <div class="muted">Privacy-first · No uploads · Client-side only</div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
